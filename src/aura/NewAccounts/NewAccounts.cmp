@@ -1,0 +1,32 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" 
+                controller="BulkAccountController">
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    <aura:attribute name="accounts" type="Account[]" />
+    
+    <div class="bg slds-p-around_medium">
+        <div class="slds-text-heading_large">Accounts</div>
+        <aura:iteration items="{!v.accounts}" var="account" indexVar="index">
+            <div class="slds-form slds-form_compound">
+                <fieldset class="slds-form-element">
+                    <div class="slds-form-element__group">
+                        <div class="slds-form-element__row">
+                            <c:NewAccount account="{!account}" index="{!index}">
+                                <aura:set attribute="buttons">
+                                    <div class="slds-form-element">
+                                        <label class="slds-form-element__label">Actions</label>
+                                        <div class="slds-form-element__control">
+                                            <lightning:button label="Delete" onclick="{!c.deleteRow}"
+                                                              name="{!'btn' + index}" />
+                                        </div>
+                                    </div>
+                                </aura:set>
+                            </c:NewAccount>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </aura:iteration>
+        <lightning:button label="Add Row" onclick="{!c.addRow}" />
+        <lightning:button label="Save" onclick="{!c.saveRows}" />
+    </div>
+</aura:component>

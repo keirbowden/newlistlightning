@@ -1,0 +1,11 @@
+<aura:component >
+    <aura:attribute name="account" type="Account" />
+    <aura:attribute name="index" type="Integer" />
+    <aura:attribute name="buttons" type="Aura.Component[]" />
+    
+    <lightning:input label="Index" type="text" value="{!v.index}" disabled="true" />
+    <lightning:input label="Name" type="text" value="{!v.account.Name}" />
+    <lightning:input label="Employees" type="number" value="{!v.account.NumberOfEmployees}" />
+    {!v.buttons}
+    
+</aura:component>
